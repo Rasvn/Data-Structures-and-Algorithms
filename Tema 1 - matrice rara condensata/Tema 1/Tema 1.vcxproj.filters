@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Matrice.cpp">
+      <Filter>Matrice</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScurt.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="TestExtins.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Matrice.h">
+      <Filter>Matrice</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScurt.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="TestExtins.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorDinamic.h">
+      <Filter>VectorDinamic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Matrice">
+      <UniqueIdentifier>{628a7739-32f7-4216-a9cf-9b0044648937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Teste">
+      <UniqueIdentifier>{deb3480e-2082-41dc-bc16-2609e1486e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VectorDinamic">
+      <UniqueIdentifier>{ca4b506c-dc7b-45cd-a5dd-483f6816f1c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
