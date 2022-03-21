@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="TestScurt.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="TestExtins.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="IteratorMultime.h">
+      <Filter>TAD Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="Multime.h">
+      <Filter>TAD Multime</Filter>
+    </ClInclude>
+    <ClInclude Include="NodMultime.h">
+      <Filter>TAD Nod</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="TestExtins.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScurt.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="IteratorMultime.cpp">
+      <Filter>TAD Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="Multime.cpp">
+      <Filter>TAD Multime</Filter>
+    </ClCompile>
+    <ClCompile Include="NodMultime.cpp">
+      <Filter>TAD Nod</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Teste">
+      <UniqueIdentifier>{f0ba0d58-a61d-4373-8b2b-80eed0da853c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TAD Multime">
+      <UniqueIdentifier>{85f5cd44-8e86-4893-8ab0-0457c3c3140c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TAD Iterator">
+      <UniqueIdentifier>{da642168-63b5-4715-936d-a09871ad9f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TAD Nod">
+      <UniqueIdentifier>{6372c751-0e07-4cf8-a42a-34205b465d32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
