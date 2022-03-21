@@ -6,7 +6,7 @@ using namespace std;
 Matrice::Matrice(int n, int m)
 		: Linie(1), Valoare(1) {
 	if (m < 0 || n < 0) {
-		throw exception("");
+		throw exception("Nu s-a putut initializa matricea, valorile sunt invalide!");
 	}
 	nrLin = n;
 	nrCol = m;
@@ -30,7 +30,7 @@ int Matrice::nrColoane() const{
 
 TElem Matrice::element(int i, int j) const {
 	if (i < 0 || i > nrLin || j < 0 || j > nrCol) {
-		throw exception("");
+		throw exception("Nu s-a putut returna elementul, coordonatele sunt invalide!");
 	}
 	for (int k = Coloana[i]; k < Coloana[i + 1]; ++k) {
 		if (Linie.element(k) == j) {
@@ -42,7 +42,7 @@ TElem Matrice::element(int i, int j) const {
 
 TElem Matrice::modifica(int i, int j, TElem e) {
 	if (i < 0 || i > nrLin || j < 0 || j > nrCol) {
-		throw exception("");
+		throw exception("Nu s-a putut realiza modificarea, coordonatele sunt invalide!");
 	}
 	int k;
 	bool passed = false;

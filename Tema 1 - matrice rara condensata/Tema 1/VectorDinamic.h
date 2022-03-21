@@ -60,8 +60,8 @@ void VectorDinamic<Type>::redim() {
 
 template <typename Type>
 VectorDinamic<Type>::VectorDinamic(int cp) {
-	if (cp < 0) {
-		throw std::exception("");
+	if (cp < 1) {
+		throw std::exception("Capacitatea vectorului trebuie sa fie un numar pozitiv!");
 	}
 	this->cp = cp;		// setam capacitatea la cea data
 	this->n = 0;		// setam dimensiunea la 0
@@ -95,7 +95,7 @@ void VectorDinamic<Type>::adaugaSfarsit(Type e) {
 template <typename Type>
 void VectorDinamic<Type>::adauga(int i, Type e) {
 	if (i < 0 || i > n) {
-		throw std::exception("");
+		throw std::exception("Nu s-a putut adauga elementul, pozitia este invalida!");
 	}
 	if (n == cp) {
 		redim();
@@ -110,7 +110,7 @@ void VectorDinamic<Type>::adauga(int i, Type e) {
 template <typename Type>
 Type VectorDinamic<Type>::modifica(int i, Type e) {
 	if (i < 0 || i >= n) {
-		throw std::exception("");
+		throw std::exception("Nu s-a putut realiza modificarea, pozitia este invalida!");
 	}
 	Type old = this->e[i];
 	this->e[i] = e;
@@ -120,7 +120,7 @@ Type VectorDinamic<Type>::modifica(int i, Type e) {
 template <typename Type>
 Type VectorDinamic<Type>::sterge(int i) {
 	if (i < 0 || i >= n) {
-		throw std::exception("");
+		throw std::exception("Nu s-a putut sterge elementul, pozitia este invalida!");
 	}
 	Type old = e[i];
 	for (int j = i; j < n; ++j) {
