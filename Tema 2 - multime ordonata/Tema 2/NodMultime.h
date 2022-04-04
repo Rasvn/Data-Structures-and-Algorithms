@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Multime.h"
 
 class Nod;
@@ -15,6 +15,10 @@ public:
 	friend class Multime;
 	// constructor
 	Nod(TElem e, PNod next);
+
+	// Complexitate timp: T(n) ∈ Θ(1)
 	TElem element();
+
+	// Complexitate timp: T(n) ∈ Θ(1)
 	PNod urmator();
 };

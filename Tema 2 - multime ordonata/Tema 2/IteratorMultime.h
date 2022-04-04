@@ -1,5 +1,6 @@
-#pragma once
+﻿#pragma once
 #include "Multime.h"
+#include "NodMultime.h"
 
 typedef int TElem;
 
@@ -9,6 +10,7 @@ typedef Nod* PNod;
 class IteratorMultime
 {
 	friend class Multime;
+	friend class Nod;
 
 private:
 
@@ -25,17 +27,21 @@ private:
 public:
 
 		//reseteaza pozitia iteratorului la inceputul containerului
+		// Complexitate timp: T(n) = 1 ∈ Θ(1)
 		void prim();
 
 		//muta iteratorul in container
 		// arunca exceptie daca iteratorul nu e valid
+		// Complexitate timp: T(n) = 1 ∈ Θ(1)
 		void urmator();
 
 		//verifica daca iteratorul e valid (indica un element al containerului)
+		// Complexitate timp: T(n) = 1 ∈ Θ(1)
 		bool valid() const;
 
 		//returneaza valoarea elementului din container referit de iterator
 		//arunca exceptie daca iteratorul nu e valid
+		// Complexitate timp: T(n) = 1 ∈ Θ(1)		
 		TElem element() const;
 };
 

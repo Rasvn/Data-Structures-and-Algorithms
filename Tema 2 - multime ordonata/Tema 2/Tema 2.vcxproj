@@ -23,6 +23,7 @@
     <ClInclude Include="Multime.h" />
     <ClInclude Include="NodMultime.h" />
     <ClInclude Include="TestExtins.h" />
+    <ClInclude Include="TestFunctionalitate.h" />
     <ClInclude Include="TestScurt.h" />
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +32,7 @@
     <ClCompile Include="Multime.cpp" />
     <ClCompile Include="NodMultime.cpp" />
     <ClCompile Include="TestExtins.cpp" />
+    <ClCompile Include="TestFunctionalitate.cpp" />
     <ClCompile Include="TestScurt.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

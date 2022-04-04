@@ -104,6 +104,23 @@ bool Multime::vida() const {
 	return prim == nullptr;
 }
 
+int Multime::diferenta(const Multime& b) {
+	int nr_elim = 0;
+	PNod i = b.prim;
+	while (i != nullptr) {
+		PNod j = this->prim;
+		while (j != nullptr) {
+			if (i->elem == j->elem) {
+				this->sterge(i->elem);
+				nr_elim++;
+			}
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return nr_elim;
+}
+
 IteratorMultime Multime::iterator() const {
 	return IteratorMultime(*this);
 }

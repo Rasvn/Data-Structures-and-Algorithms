@@ -16,6 +16,9 @@
     <ClInclude Include="NodMultime.h">
       <Filter>TAD Nod</Filter>
     </ClInclude>
+    <ClInclude Include="TestFunctionalitate.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
@@ -33,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="NodMultime.cpp">
       <Filter>TAD Nod</Filter>
+    </ClCompile>
+    <ClCompile Include="TestFunctionalitate.cpp">
+      <Filter>Teste</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
