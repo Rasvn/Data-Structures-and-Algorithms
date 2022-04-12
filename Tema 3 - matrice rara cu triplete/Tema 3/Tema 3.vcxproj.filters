@@ -11,6 +11,9 @@
     <ClCompile Include="TestScurt.cpp">
       <Filter>Teste</Filter>
     </ClCompile>
+    <ClCompile Include="TestFunctionalitate.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrice.h">
@@ -20,6 +23,9 @@
       <Filter>Teste</Filter>
     </ClInclude>
     <ClInclude Include="TestScurt.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFunctionalitate.h">
       <Filter>Teste</Filter>
     </ClInclude>
   </ItemGroup>

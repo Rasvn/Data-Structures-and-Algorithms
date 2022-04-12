@@ -64,4 +64,7 @@ public:
 	// se arunca exceptie daca (i,j) nu e o pozitie valida in Matrice
 	TElem modifica(int i, int j, TElem);
 
+	// face suma elementelor de pe diagonala princiapala a matricii
+	TElem sumaDiagonalaPrincipala();
+
 };

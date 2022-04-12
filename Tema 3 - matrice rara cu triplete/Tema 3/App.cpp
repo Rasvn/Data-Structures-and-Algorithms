@@ -2,11 +2,13 @@
 #include "Matrice.h"
 #include "TestExtins.h"
 #include "TestScurt.h"
+#include "TestFunctionalitate.h"
 
 using namespace std;
 
 int main() {
 	testAll();
 	testAllExtins();
-	cout << "End";
+	testFunctionalitate();
+	cout << "Bau";
 }

@@ -112,12 +112,17 @@ TElem Matrice::element(int i, int j) const{
 	if (i < 0 || j < 0 || i > rows || j > cols) {
 		throw exception("Invalid positions");
 	}
-	int k = prim;
-	while (k != -1) {
-		if (elem[k].row == i && elem[k].col == j) {
-			return elem[k].val;
+	int ind = prim;
+	while (ind != -1) {
+		if (elem[ind].row > i || (elem[ind].row == i && elem[ind].col >= j)) {
+			if (elem[ind].row == i && elem[ind].col == j) {
+				return elem[ind].val;
+			}
+			else {
+				break;
+			}
 		}
-		k = urm[k];
+		ind = urm[ind];
 	}
 	return NULL_TELEMENT;
 }
@@ -149,18 +154,22 @@ TElem Matrice::modifica(int i, int j, TElem e) {
 		if (e == NULL_TELEMENT) {
 			// caz stergere element
 			if (ind == prim) {
+				// caz stergere primul element
 				prec[urm[prim]] = -1;
 				prim = urm[prim];
 			}
 			else if (ind == ultim) {
+				// caz sterge ultimul element
 				urm[prec[ultim]] = -1;
 				ultim = prec[ultim];
 			}
 			else {
+				// caz stergere elementul de pe pozitia ind
 				int aux = prec[ind];
 				prec[urm[ind]] = prec[ind];
 				urm[aux] = urm[ind];
 			}
+			// dealocam spatiul folosit de ind
 			dealoca(ind);
 			--vals;
 		}
@@ -172,6 +181,7 @@ TElem Matrice::modifica(int i, int j, TElem e) {
 	}
 
 	if (e != NULL_TELEMENT) {
+		// daca e = NIL si elementul de pe pozitia (i, j) este tot NIL, nu se va modifica nimic
 		int poz = creeazaNod({ i, j, e });
 		++vals;
 
@@ -211,6 +221,26 @@ TElem Matrice::modifica(int i, int j, TElem e) {
 	}
 
 	return NULL_TELEMENT;
+}
+
+TElem Matrice::sumaDiagonalaPrincipala() {
+	//	Complexitate timp:
+	//		* m = numarul de elemente, m = minimul dintre numarul de linii si cel de coloane
+	//		Caz favorabil: Matricea este o matrice diagonala, T(m) = m * 1 = m, T(n, m) ∈ Θ(m)
+	//		Caz defavorabil: Matricea are doar elemente nenule sub si pe diagonala principala, 
+	//			T(m) = 1 + 2 + ... + m = m * (m + 1)/2, T(m) ∈ Θ(m^2)
+	//		Caz mediu: T(n) = 1/[m(m - 1) / 2] * [m + (m + 1) + (m + 2) + ... + m * (m + 1) / 2] =
+	//			= 1/[m(m - 1) / 2] * {m(m + 1)[m(m + 1) - 2]} / 8 = [m(m + 1) - 2]/ 4, T(m) ∈ Θ(m^2)
+	//	Complexitate generala: T(m) ∈ O(m^2)	
+	TElem suma = NULL_TELEMENT;
+	int nrElemDiagonalaPrincipala = rows;
+	if (rows > cols) {
+		nrElemDiagonalaPrincipala = cols;
+	}
+	for (int i = 0; i < nrElemDiagonalaPrincipala; ++i) {
+		suma += element(i, i);
+	}
+	return suma;
 }
 
 Matrice::~Matrice() {
