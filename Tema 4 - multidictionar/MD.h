@@ -31,7 +31,6 @@ private:
 	// actualizare prim liber
 	void actPrimLiber();
 
-	void cautaPrimLiber();
 
 	// functia de dispersie
 	int d(TCheie e) const;

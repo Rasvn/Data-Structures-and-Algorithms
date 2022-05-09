@@ -1,32 +1,33 @@
-#include "IteratorMD.h"
+﻿#include "IteratorMD.h"
 #include "MD.h"
 
 using namespace std;
 
 void IteratorMD::deplasare() {
+	/// Complexitate timp: Θ(1)
 	while ((curentTD < md.m) && md.e[curentTD].first == NIL)
 		curentTD++;
 }
 
 IteratorMD::IteratorMD(const MD& _md): md(_md) {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	curentTD = 0;
 	deplasare();
 	curentVECT = 0;
 }
 
 TElem IteratorMD::element() const{
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	return { md.e[curentTD].first, md.e[curentTD].second.at(curentVECT) };
 }
 
 bool IteratorMD::valid() const {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	return curentTD < md.m;
 }
 
 void IteratorMD::urmator() {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	if (curentVECT + 1 < md.e[curentTD].second.size()) {
 		curentVECT++;
 		return;
@@ -37,7 +38,7 @@ void IteratorMD::urmator() {
 }
 
 void IteratorMD::prim() {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	curentTD = 0;
 	deplasare();
 	curentVECT = 0;

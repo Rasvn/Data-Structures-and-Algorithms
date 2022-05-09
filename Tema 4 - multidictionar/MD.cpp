@@ -1,4 +1,4 @@
-#include "MD.h"
+﻿#include "MD.h"
 #include "IteratorMD.h"
 #include <exception>
 #include <iostream>
@@ -11,27 +11,23 @@ int hashFunction(TCheie e) {
 }
 
 int MD::d(TCheie e) const {
+	/// Complexitate timp: Θ(1)
 	return hashFunction(e) % m;
 }
 
 void MD::actPrimLiber() {
+	/// Caz favorabil: Θ(1)
+	/// Caz defavorabil: Θ(m)
+	/// Complexitate generala: O(m)
 	primLiber++;
 	while (primLiber < m && e[primLiber].first != NIL) {
 		primLiber++;
 	}
 }
 
-void MD::cautaPrimLiber() {
-	primLiber = 0;
-	while (primLiber < m && e[primLiber].first != NIL) {
-		primLiber++;
-	}
-}
-
 MD::MD() {
-	/* de adaugat */
+	/// Complexitate generala: O(m)
 	m = MAXMD;
-	//e = new TSectiune[MAXMD];
 	urm = new int[MAXMD];
 	e = new TSectiune[MAXMD];
 
@@ -46,12 +42,14 @@ MD::MD() {
 
 
 void MD::adauga(TCheie c, TValoare v) {
+	/// Caz favorabil: Θ(1)
+	/// Caz defavorabil: Θ(m)
+	/// Complexitate generala: O(m)
 	nrElem++;
 	int i = d(c); // locatia de dispersie a cheii
 
 	if (e[i].first == NIL) { // cazul in care pozitia este libera
 		e[i].first = c;
-		e[i].second.clear();
 		e[i].second.push_back(v); // adaugam elementul
 		if (i == primLiber) {
 			actPrimLiber(); // actualizam primLiber daca este nevoie
@@ -80,7 +78,6 @@ void MD::adauga(TCheie c, TValoare v) {
 
 	// adaugam noua cheie
 	e[primLiber].first = c;
-	e[primLiber].second.clear();
 	e[primLiber].second.push_back(v);
 	urm[j] = primLiber;
 	actPrimLiber();
@@ -88,7 +85,9 @@ void MD::adauga(TCheie c, TValoare v) {
 
 
 bool MD::sterge(TCheie c, TValoare v) {
-	/* de adaugat */
+	/// Caz favorabil: Θ(1)
+	/// Caz defavorabil: Θ(m)
+	/// Complexitate generala: O(m)
 
 	int i = d(c);
 	int j = NIL;
@@ -157,6 +156,7 @@ bool MD::sterge(TCheie c, TValoare v) {
 			urm[j] = urm[i];
 		}
 		e[i].first = NIL;
+		e[i].second.clear();
 		urm[i] = NIL;
 
 		if (primLiber > i) {
@@ -168,7 +168,9 @@ bool MD::sterge(TCheie c, TValoare v) {
 
 
 vector<TValoare> MD::cauta(TCheie c) const {
-	/* de adaugat */
+	/// Caz favorabil: Θ(1)
+	/// Caz defavorabil: Θ(m)
+	/// Complexitate generala: O(m)
 	int i = d(c);
 	while (e[i].first != c && i != NIL) {
 		i = urm[i];
@@ -182,22 +184,25 @@ vector<TValoare> MD::cauta(TCheie c) const {
 
 
 int MD::dim() const {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	return nrElem;
 }
 
 
 bool MD::vid() const {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
 	return nrElem == 0;
 }
 
 IteratorMD MD::iterator() const {
+	/// Complexitate timp: Θ(1)
 	return IteratorMD(*this);
 }
 
 
 MD::~MD() {
-	/* de adaugat */
+	/// Complexitate timp: Θ(1)
+	delete[] urm;
+	delete[] e;
 }
 
