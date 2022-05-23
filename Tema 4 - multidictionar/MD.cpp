@@ -168,8 +168,8 @@ bool MD::sterge(TCheie c, TValoare v) {
 
 
 vector<TValoare> MD::cauta(TCheie c) const {
-	/// Caz favorabil: Θ(1)
-	/// Caz defavorabil: Θ(m)
+	/// Caz favorabil: Θ(1), cheia se gaseste la valoarea ei de dispersare
+	/// Caz defavorabil: Θ(m), pentru o dispersie foarte ineficienta
 	/// Complexitate generala: O(m)
 	int i = d(c);
 	while (e[i].first != c && i != NIL) {
@@ -197,6 +197,18 @@ bool MD::vid() const {
 IteratorMD MD::iterator() const {
 	/// Complexitate timp: Θ(1)
 	return IteratorMD(*this);
+}
+
+void MD::goleste() {
+	/// Complexitate timp: Θ(m + n) unde n este numarul de TElemente
+	for (int i = 0; i < m; ++i) {
+		if (e[i].first != NIL) {
+			e[i].first = NIL;
+			e[i].second.clear();
+		}
+	}
+	nrElem = 0;
+	primLiber = 0;
 }
 
 

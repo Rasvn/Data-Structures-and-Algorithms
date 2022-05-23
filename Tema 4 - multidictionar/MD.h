@@ -58,6 +58,9 @@ public:
 	// se returneaza iterator pe MD
 	IteratorMD iterator() const;
 
+	// sterge toate elementele din MD
+	void goleste();
+
 	// destructorul MultiDictionarului	
 	~MD();
 
