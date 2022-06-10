@@ -22,7 +22,7 @@ static const Triplet NULL_TRIPLET = { -1, -1, NULL_TELEMENT };
 class Matrice {
 
 private:
-	/* aici e reprezentarea */
+	void afiseazaArb(int p, int niv);
 
 	Triplet* el;
 	int* st;
@@ -74,4 +74,5 @@ public:
 	// se arunca exceptie daca (i,j) nu e o pozitie valida in Matrice
 	TElem modifica(int i, int j, TElem);
 
+	TElem suma(int j);
 };

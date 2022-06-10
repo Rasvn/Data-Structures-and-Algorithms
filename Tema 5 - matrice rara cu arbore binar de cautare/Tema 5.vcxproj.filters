@@ -10,6 +10,9 @@
     <ClInclude Include="TestScurt.h">
       <Filter>Teste</Filter>
     </ClInclude>
+    <ClInclude Include="TestExtra.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
@@ -22,6 +25,9 @@
     <ClCompile Include="TestScurt.cpp">
       <Filter>Teste</Filter>
     </ClCompile>
+    <ClCompile Include="TestExtra.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Matrice">
@@ -30,5 +36,8 @@
     <Filter Include="Teste">
       <UniqueIdentifier>{979b48d2-e68a-4048-af37-ace437937a01}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="PseudocodExtra.txt" />
   </ItemGroup>
 </Project>

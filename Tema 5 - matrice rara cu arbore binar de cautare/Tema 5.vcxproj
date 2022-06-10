@@ -129,13 +129,18 @@
   <ItemGroup>
     <ClInclude Include="Matrice.h" />
     <ClInclude Include="TestExtins.h" />
+    <ClInclude Include="TestExtra.h" />
     <ClInclude Include="TestScurt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Matrice.cpp" />
     <ClCompile Include="TestExtins.cpp" />
+    <ClCompile Include="TestExtra.cpp" />
     <ClCompile Include="TestScurt.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="PseudocodExtra.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,11 +1,25 @@
-#pragma warning (disable: 6386)
+﻿#pragma warning (disable: 6386)
 #include "Matrice.h"
 
 #include <exception>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
+// Complexitate timp: Θ(n)
+void Matrice::afiseazaArb(int p, int niv) {
+	if (p != -1) {
+		if (st[p] != -1 && dr[p] != -1) {
+			printf("Pereche: (%d, %d) | Nivel: %d | Stanga: (%d, %d) | Dreapta: (%d, %d)\n", el[p].lin, el[p].col, niv,
+				el[st[p]].lin, el[st[p]].col, el[dr[p]].lin, el[dr[p]].col);
+		}
+		afiseazaArb(st[p], niv + 1);
+		afiseazaArb(dr[p], niv + 1);
+	}
+}
+
+// Complexitate timp: Θ(1)
 bool Matrice::rel(const Triplet& t1, const Triplet& t2) const {
 	if (t1.lin < t2.lin) {
 		return true;
@@ -16,12 +30,14 @@ bool Matrice::rel(const Triplet& t1, const Triplet& t2) const {
 	return false;
 }
 
+// Complexitate timp: O(cap)
 void Matrice::actPrimLiber() {
 	while (el[primLiber] != NULL_TRIPLET) {
 		primLiber++;
 	}
 }
 
+// Complexitate timp: O(cap)
 int Matrice::creeazaNod(Triplet e) {
 	int i = primLiber;
 	el[i] = e;
@@ -32,6 +48,7 @@ int Matrice::creeazaNod(Triplet e) {
 	return i;
 }
 
+// Complexitate timp: O(h)
 int Matrice::adaugaRec(int p, Triplet e) {
 	if (p == -1) {
 		p = creeazaNod(e);
@@ -47,6 +64,7 @@ int Matrice::adaugaRec(int p, Triplet e) {
 	return p;
 }
 
+// Complexitate timp: O(h)
 int Matrice::minim(int p) {
 	while (st[p] != -1) {
 		p = st[p];
@@ -54,6 +72,7 @@ int Matrice::minim(int p) {
 	return p;
 }
 
+// Complexitate timp: O(h)
 int Matrice::stergeRec(int p, Triplet e) {
 	if (p == -1) {
 		return -1;
@@ -100,6 +119,7 @@ int Matrice::stergeRec(int p, Triplet e) {
 	return p;
 }
 
+// Complexitate timp: Θ(cap)
 Matrice::Matrice(int m, int n) {
 	if (m <= 0 || n <= 0) {
 		throw exception("Dimensiuni invalide!");
@@ -125,17 +145,19 @@ Matrice::Matrice(int m, int n) {
 }
 
 
-
+// Complexitate timp: Θ(1)
 int Matrice::nrLinii() const{
 	return nrLin;
 }
 
 
+// Complexitate timp: Θ(1)
 int Matrice::nrColoane() const{
 	return nrCol;
 }
 
 
+// Complexitate timp: O(h)
 TElem Matrice::element(int i, int j) const{
 	if (i < 0 || j < 0 || i >= nrLin || j >= nrCol) {
 		throw exception("Pozitie invalida!");
@@ -156,11 +178,15 @@ TElem Matrice::element(int i, int j) const{
 }
 
 
-
+// Complexitate timp: O(h + cap) = O(cap)
 TElem Matrice::modifica(int i, int j, TElem e) {
 	if (i < 0 || j < 0 || i >= nrLin || j >= nrCol) {
 		throw exception("Pozitie invalida!");
 	}
+
+	//afiseazaArb(root, 0);
+	//cout << "\n\n#########################\n\n";
+
 	Triplet toFind = { i, j, e };
 	int curent = root;
 	while (curent != -1) {
@@ -191,6 +217,36 @@ TElem Matrice::modifica(int i, int j, TElem e) {
 	TElem old = el[curent].elem;
 	root = stergeRec(root, el[curent]);
 	root = adaugaRec(root, toFind);
+	
 	return old;
 }
 
+// Complexitate timp: Θ(n)
+TElem Matrice::suma(int j) {
+	if (j >= nrCol || j < 0) {
+		throw exception("Coloana respectiva nu se afla in matrice!");
+	}
+	TElem suma = NULL_TELEMENT;
+	int n = nrLin;
+	queue<int> Q;
+	Q.push(root);
+
+	while (!Q.empty()) {
+		int nod = Q.front();
+		Q.pop();
+
+		if (el[nod].col == j) {
+			suma += el[nod].elem;
+		}
+
+		if (st[nod] != -1) {
+			Q.push(st[nod]);
+		}
+
+		if (dr[nod] != -1) {
+			Q.push(dr[nod]);
+		}
+	}
+
+	return suma;
+}
